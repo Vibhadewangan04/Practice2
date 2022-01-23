@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="2a16ed99-f5a0-4b00-ad57-67796a11bdb3" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="&lt;Atomapi>Attempt to get all jobs by providing invalid projectkey" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2a16ed99-f5a0-4b00-ad57-67796a11bdb3fileName">%3CAtomapi%3EAttempt-to-get-all-jobs-by-providing-invalid-projectkey</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="get all jobs invalid key" id="ea21c543-93a1-4af6-b62c-a6166387dce0">
+    <con:settings/>
+    <con:config service="get all jobs in the project api" resourcePath="/api/v1/automation/job/list/{projectKey}" methodName="ProjectKey" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="get all jobs invalid key" id="35c01c19-8c60-4fc1-8905-310a5336eaec" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accesskey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/list/XRAY</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="90c3f0f5-7517-4d55-bf95-cf1ef408471c" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>202</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="8a2bc6d8-ef44-4c30-9932-ae39095bcbae" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Project is already deleted or Project doesn't Exist.</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>52</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="52">&lt;![CDATA[Project is already deleted or Project doesn't Exist.]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="projectKey" value="asjhfdkjfh9ends"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>projectKey</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>

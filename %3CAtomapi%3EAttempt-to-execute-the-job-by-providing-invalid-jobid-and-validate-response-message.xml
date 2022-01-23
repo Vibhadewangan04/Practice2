@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="d3cd1e95-a813-4b05-9b67-78ab9a91556f" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="&lt;Atomapi>Attempt to execute the job by providing invalid jobid and validate response message" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d3cd1e95-a813-4b05-9b67-78ab9a91556ffileName">%3CAtomapi%3EAttempt-to-execute-the-job-by-providing-invalid-jobid-and-validate-response-message</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="invalid jobid" id="9bb7d6b7-2cbe-4b4a-a60e-987b48bcf9e0">
+    <con:settings/>
+    <con:config service="Execute job api" resourcePath="/api/v1/automation/job/execute" methodName="Execute" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="invalid jobid" id="faa0a804-c9d4-4bb9-982b-1523fdde0ee6" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">true</con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2c6d0545-4ce6-44f2-bdeb-d37d9b4da2ca" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="ca7fd5b7-fc4e-49c7-9605-61cfb0b1c036" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>declare namespace ns1='https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute';
+//ns1:Response[1]/ns1:message[1]</con:xpath>
+              <con:element>message</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>exists</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Job executed successfully.</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;Response xmlns="https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute">
+   &lt;message>Job executed successfully.&lt;/message>
+&lt;/Response></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="c7223bf4-1c88-433b-b81e-434abda8318f" name="Message Content Assertion 2">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>declare namespace ns1='https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute';
+//ns1:Response[1]/ns1:message[1]</con:xpath>
+              <con:element>message</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Job is already deleted or Job doesn't Exist.</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;Response xmlns="https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute">
+   &lt;message>Job is already deleted or Job doesn't Exist.&lt;/message>
+&lt;/Response></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="invalid234354dsfds45"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>

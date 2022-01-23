@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="c01c9147-d044-4bd7-82d1-857aca94b5fd" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="&lt;Atomapi>Attempt to delete the job by providing invalid jobId and validate response" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="c01c9147-d044-4bd7-82d1-857aca94b5fdfileName">%3CAtomapi%3EAttempt-to-delete-the-job-by-providing-invalid-jobId-and-validate-response</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="invalid job deletion" id="45b3ba8b-a28e-4ff5-98c1-00b446c2bcae">
+    <con:settings/>
+    <con:config service="delete job api" resourcePath="/api/v1/automation/job/{jobId}" methodName="JobId" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="invalid job deletion" id="30bd03d0-691d-48d7-b595-eee770c253fc" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/7A04CB86ADCA7F18986C9C331F23BDDB617447240F7792120C0E3EAF3182C95A</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="da84ea13-8332-410c-9cff-1ef18153138a" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="02d51434-12a3-4e74-b091-76e834ac4e54" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Job is already deleted or Job doesn't Exist.</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>44</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="44">&lt;![CDATA[Job is already deleted or Job doesn't Exist.]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="12332434"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>

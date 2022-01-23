@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="868e5e65-620b-4f92-9ec2-4ce7291cae4b" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="&lt;Atomapi>Should able to execute the job for all framework" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="868e5e65-620b-4f92-9ec2-4ce7291cae4bfileName">%3CAtomapi%3EShould-able-to-execute-the-job-for-all-framework</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="groovy" name="Groovy Script" id="00bf7e8a-70a0-449b-a6fc-156cc358983a">
+    <con:settings/>
+    <con:config>
+      <script><![CDATA[//def responseAsXml = context.expand( '${<Atomapi>Should able to create Job for new cycle for Selenium framework by providing all fields#ResponseAsXml#declare namespace ns1=\'https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/create\'; //ns1:Response[1]/ns1:message[1]}' )
+
+//log.info(responseAsXml);
+//def namePropertyvaluePartial = namePropertyvalue[-7..-5]  //this grabs 3 characters the 7th,8th and 9th character
+//def jobid = responseAsXml[47..-1]
+//log.info(jobid);
+
+
+
+//def myList = ["Selenium", "TestNg", "JUNIT"]
+
+
+//def framework = myList[0];
+
+//log.info(framework);
+
+
+
+//Selenium
+def response = context.expand('${#[ATOM-APIs#<Atomapi>Should able to create Job for new cycle for all framework by providing all fields#Selenium]#Response#$[\'message\']}')
+
+
+log.info ("Extracting job id from response: "+response +"\n");
+
+
+def jobid = response[47..-1]
+
+log.info(jobid);
+
+context.testCase.setPropertyValue('seleniumjobid', jobid)
+
+
+//TestNg
+
+def response1 = context.expand( '${#[ATOM-APIs#<Atomapi>Should able to create Job for new cycle for all framework by providing all fields#TestNg]#Response#$[\'message\']}' )
+
+log.info ("Extracting job id from response: "+response1 +"\n");
+
+def jobid1 = response1[47..-1]
+
+log.info(jobid1);
+
+context.testCase.setPropertyValue('TestNgjobid', jobid1)
+
+
+//JUNIT
+
+def response2 = context.expand( '${#[ATOM-APIs#<Atomapi>Should able to create Job for new cycle for all framework by providing all fields#JUNIT]#Response#$[\'message\']}' )
+
+log.info ("Extracting job id from response: "+response2 +"\n");
+
+def jobid2 = response2[47..-1]
+
+log.info(jobid2);
+
+context.testCase.setPropertyValue('Junitjobid', jobid2)
+
+
+
+
+//SoapUI
+
+def response3 = context.expand( '${#[ATOM-APIs#<Atomapi>Should able to create Job for new cycle for all framework by providing all fields#SoapUI]#Response#$[\'message\']}' )
+
+log.info ("Extracting job id from response: "+response3 +"\n");
+
+def jobid3 = response1[47..-1]
+
+log.info(jobid3);
+
+context.testCase.setPropertyValue('SoapUIjobid', jobid3)
+
+
+
+//Tricentis Tosca
+
+def response5 = context.expand( '${#[ATOM-APIs#<Atomapi>Should able to create Job for new cycle for all framework by providing all fields#Tricentis Tosca]#Response#$[\'message\']}' )
+
+log.info ("Extracting job id from response: "+response3 +"\n");
+
+def jobid5 = response1[47..-1]
+
+log.info(jobid5);
+
+context.testCase.setPropertyValue('toscajobid', jobid5)
+
+
+
+
+//UFT
+
+def response6 = context.expand( '${#[ATOM-APIs#<Atomapi>Should able to create Job for new cycle for all framework by providing all fields#UFT]#Response#$[\'message\']}' )
+
+log.info ("Extracting job id from response: "+response3 +"\n");
+
+def jobid6 = response1[47..-1]
+
+log.info(jobid6);
+
+context.testCase.setPropertyValue('UFTjobid', jobid6)
+
+
+
+//Egg Plant
+
+def response7 = context.expand( '${#[ATOM-APIs#<Atomapi>Should able to create Job for new cycle for all framework by providing all fields#Egg Plant]#Response#$[\'message\']}' )
+
+log.info ("Extracting job id from response: "+response3 +"\n");
+
+def jobid7 = response1[47..-1]
+
+log.info(jobid7);
+
+context.testCase.setPropertyValue('EggPlantjobid', jobid7)]]></script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Selenium" id="af366f81-9216-4bc6-9215-e8a68b596422">
+    <con:settings/>
+    <con:config service="Execute job api" resourcePath="/api/v1/automation/job/execute" methodName="Execute" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Selenium" id="faa0a804-c9d4-4bb9-982b-1523fdde0ee6" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">true</con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2c6d0545-4ce6-44f2-bdeb-d37d9b4da2ca" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="ca7fd5b7-fc4e-49c7-9605-61cfb0b1c036" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>declare namespace ns1='https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute';
+//ns1:Response[1]/ns1:message[1]</con:xpath>
+              <con:element>message</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>exists</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Job executed successfully.</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;Response xmlns="https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute">
+   &lt;message>Job executed successfully.&lt;/message>
+&lt;/Response></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#seleniumjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="TestNg" id="81ba8465-6ca7-42ef-9488-74aa5a8455b6">
+    <con:settings/>
+    <con:config service="Execute job api" resourcePath="/api/v1/automation/job/execute" methodName="Execute" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="TestNg" id="faa0a804-c9d4-4bb9-982b-1523fdde0ee6" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">true</con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2c6d0545-4ce6-44f2-bdeb-d37d9b4da2ca" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#TestNgjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="JUNIT" id="be277bf0-00d8-465e-8e74-de7aba04a8d1">
+    <con:settings/>
+    <con:config service="Execute job api" resourcePath="/api/v1/automation/job/execute" methodName="Execute" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="JUNIT" id="faa0a804-c9d4-4bb9-982b-1523fdde0ee6" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">true</con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2c6d0545-4ce6-44f2-bdeb-d37d9b4da2ca" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#Junitjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="SoapUI" id="acd10e2a-0a67-4bc8-b457-b7c9c36863e5">
+    <con:settings/>
+    <con:config service="Execute job api" resourcePath="/api/v1/automation/job/execute" methodName="Execute" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="SoapUI" id="faa0a804-c9d4-4bb9-982b-1523fdde0ee6" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">true</con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2c6d0545-4ce6-44f2-bdeb-d37d9b4da2ca" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#SoapUIjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Tricentis Tosca" id="ec0b15e4-e2e4-44c5-93c0-5507cf7868d7">
+    <con:settings/>
+    <con:config service="Execute job api" resourcePath="/api/v1/automation/job/execute" methodName="Execute" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Tricentis Tosca" id="faa0a804-c9d4-4bb9-982b-1523fdde0ee6" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">true</con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2c6d0545-4ce6-44f2-bdeb-d37d9b4da2ca" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#toscajobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="UFT" id="da3ad881-e22e-4167-9aef-2de74c0e69d3">
+    <con:settings/>
+    <con:config service="Execute job api" resourcePath="/api/v1/automation/job/execute" methodName="Execute" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="UFT" id="faa0a804-c9d4-4bb9-982b-1523fdde0ee6" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">true</con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2c6d0545-4ce6-44f2-bdeb-d37d9b4da2ca" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#UFTjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Egg Plant" id="48b1aa1a-48da-4e6c-bfd2-5edc1ace21ee">
+    <con:settings/>
+    <con:config service="Execute job api" resourcePath="/api/v1/automation/job/execute" methodName="Execute" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Egg Plant" id="faa0a804-c9d4-4bb9-982b-1523fdde0ee6" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">true</con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/execute</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2c6d0545-4ce6-44f2-bdeb-d37d9b4da2ca" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#EggPlantjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>result</con:name>
+      <con:value>6282E6855B33CB4952C8A2B39B53035A17064A550363D365B58C7120A0BBA82F</con:value>
+    </con:property>
+    <con:property>
+      <con:name>id</con:name>
+      <con:value>A8196240B76FC1D12239DC75EBBEC612D2D2340E5480CD9146C08D6BE9FD5EC4</con:value>
+    </con:property>
+    <con:property>
+      <con:name>result1</con:name>
+      <con:value>6282E6855B33CB4952C8A2B39B53035A17064A550363D365B58C7120A0BBA82F</con:value>
+    </con:property>
+    <con:property>
+      <con:name>seleniumjobid</con:name>
+      <con:value>E5726C0673A156C5DCD1262351CF82A6732960CE1EE3DD2665807C154F8750AE</con:value>
+    </con:property>
+    <con:property>
+      <con:name>TestNgjobid</con:name>
+      <con:value>12132C11023DAAA9331B290A3CAA1F670DB152B24AFA5E408C931109AF4D10FC</con:value>
+    </con:property>
+    <con:property>
+      <con:name>Junitjobid</con:name>
+      <con:value>B830F87A74F21B8A706247C0AB9195FF544A495F7C31F545DEA0C418AB4813AD</con:value>
+    </con:property>
+    <con:property>
+      <con:name>SoapUIjobid</con:name>
+      <con:value>12132C11023DAAA9331B290A3CAA1F670DB152B24AFA5E408C931109AF4D10FC</con:value>
+    </con:property>
+    <con:property>
+      <con:name>toscajobid</con:name>
+      <con:value>12132C11023DAAA9331B290A3CAA1F670DB152B24AFA5E408C931109AF4D10FC</con:value>
+    </con:property>
+    <con:property>
+      <con:name>UFTjobid</con:name>
+      <con:value>12132C11023DAAA9331B290A3CAA1F670DB152B24AFA5E408C931109AF4D10FC</con:value>
+    </con:property>
+    <con:property>
+      <con:name>EggPlantjobid</con:name>
+      <con:value>12132C11023DAAA9331B290A3CAA1F670DB152B24AFA5E408C931109AF4D10FC</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>81ba8465-6ca7-42ef-9488-74aa5a8455b6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:environmentSpec>
+    <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>

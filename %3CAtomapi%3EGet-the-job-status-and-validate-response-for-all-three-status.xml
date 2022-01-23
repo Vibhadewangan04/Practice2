@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="88a1afbe-3156-44ee-bb72-53313b58c2b1" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="&lt;Atomapi>Get the job status and validate response for all three status" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="88a1afbe-3156-44ee-bb72-53313b58c2b1fileName">%3CAtomapi%3EGet-the-job-status-and-validate-response-for-all-three-status</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="create" id="72ca1f96-ebfe-442e-87d7-05c60e87e11e">
+    <con:settings/>
+    <con:config service="create job api" resourcePath="/api/v1/automation/job/create" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="create" id="e31a395b-d7b0-4b4d-8d12-e676ff3bc46a" mediaType="multipart/form-data" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">false</con:setting>
+          <con:setting id="com.eviware.soapui.support.editor.views.xml.form2.FormEditorView@ViewType">All</con:setting>
+        </con:settings>
+        <con:endpoint>https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/create</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="67126e63-18ed-4c45-bb37-84221a4abee1" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="4d06f12f-7776-4c87-bbf3-302da56af545" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>declare namespace ns1='https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/create';
+//ns1:Response[1]/ns1:message[1]</con:xpath>
+              <con:element>message</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>exists</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Job has been successfully created, Job id is : CFD28DB32908B8D9C4D632AF076DE5CF7EF0989F3D0840F5DEACDBD7DE28B12F</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;Response xmlns="https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/create">
+   &lt;message>Job has been successfully created, Job id is : CFD28DB32908B8D9C4D632AF076DE5CF7EF0989F3D0840F5DEACDBD7DE28B12F&lt;/message>
+&lt;/Response></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:attachment>
+          <con:name>selenium.xml</con:name>
+          <con:contentType>text/xml</con:contentType>
+          <con:size>10789</con:size>
+          <con:contentId>selenium.xml</con:contentId>
+          <con:data>UEsDBBQACAgIAIiMhlAAAAAAAAAAAAAAAAAMAAAAc2VsZW5pdW0ueG1s7Vprb9s2F/68Av0PglEM7gczlmwnzqUdcu3aNa0XOy2wV0NBS7TNRCI1knKS/fodUrJ808V2iw14kQ+VJfKch4fnTqYnvzyGgTUlQlLO3tRs1KxZhHncp2z8pnY7uGp0a9Yvb1++OFFEKhlTRSzzBrQ20I4wDWJB4NOpWQyH5E3N4yFSE+Lb5umYZ8s82+bZWXg/MM8uGhP1N4kmTwKdRpEzgAVqlqIarYmabRCBCMEFrAJLynsaRcTX729fWNZJJHhEhKJE6s/5wFMqzx2eYiRipvGQHqpZUxzEMPMBZuqD69dW/9K6SQisSzalgrOQMFXbyweUMUNDzhUK6FBg8YQirCYZ6PmR2xN8LHBoXdGASFev4t759zbqoua3Q9u9E8QdUlYEb+Sdhig1SgbsdNCh3RjanWpG5nOR8X0W2AuIdc5FxAVWGrIAIMTAisI4UPSa+3FAYCN3xFMXVMCTi6cM8+rIffd+8O3msvfZjRKihl0ulxEKxSLIQCZKRUd7e2aaGyER+M5eEYzWMpIkwrCJhe0dF9GPY+oR5FOJh4AcUhkF2CM+woxxZfSAvAnx7jMkJWJSpds1/7F+5aofcWX8aL/dOKPK6hMBxrO+XBehjcAx0CzMUHQ/ziC1b1FexBdLIpD0BI1UxlFK63Fw6wW73fbLnNpsMsAxA73MFdy//fStPzj9dHF6c1HGzaUOBG+CAjIlQaV8ygR5SjSLeiNClQ1kRDw6ol5iw3WLfKFCxTiwrrE3oYxY/UX6UnX5VHyHi89yzGrgzgK/Mnbxg0KQOKIJ9SRh0yWn0HNfKWs571KCDRKVATVxJ8HvYXNyyywFCc6d8RctAmbHwpvnPxz6++1SiShHKowWdQ3SwN58/iDdweV1zy1iD8CcOSng5YvtXGbnBGmcZIoFxaw6AEExS76Z7tCCslnA4QVYygcuAl9C5LLRoi+e4RBqjosjcGrSMJm60UItdNiAUpIzrCuMi5D5CZ0Eriz0WZwlpLlZItvpOKW63bEEglTHC0bvxyyhWRmXT1KRsOUsjOlXHEVu0i7oyPRjT7m2jRzUdP3hhIfkW7aApkxAnDmpg+wc0lTiC6ywm3hEKjY89O42kCvbTjrtfh2SMH8iGejxByL6ExIE7lTLdLymuc8RYV96n4yQ3sqkVX/s7r92r6knuOQjqDu/f0xrD+ij6Q44D6R7Rhlzt+a9GPR35FxY9RozPCY6Q/VV7FO+vr8UrH//FBG3N+GMuMc7Ovu67t5R5XqhbyaeFIA7B+tEjPvkTppVO2AB+Ida7h/Waax4aHKBK0lAGI1DdwzNAvcFhZ02pk1k7yO78UDZfjvHblUeP/MgVwcmHaff4KK6NXChHBo//Mg9HMxVPeOGaXmMSuOyqkb2AqxGXITWae/9ZgXSwJoMtVbgOhB6ZcklzPxAN3gR7HCefNP2adY6DSgRxIdcnJDJkuS6VmabxVKYxK3jPa/klNqiFFGX+7/Baed9jKR47xwHXqxUeR+j63kkKFNE3PHhWql/SGRDX3sJzQeg2dzeOR3IRq3ohpnf7H3Jpy4u+78NPvcarXe/Xf9+2X21gRMtVYzvKXBwEnOjgDzGsrFQQBsO6kBJuMNi295gY9UZW0Hrg3yIVRRCIpl3vRUt0KorVvdilX07RBbEmZ+hcjGGMZ9McAzKNvpBiw3GrM9HH9MXC0oeZuZ0bzUu9M+bzdvyH9lgBZiNY0gYGT8ppNehoqDg3FNVHEKDlKDCDygb8QwkpI+QhrRNK061+a1+eUf+qHZuxh9Vbt+UzlXeWOSE3uaLCyJ5LDwidVRtUPIyPrUlA4grJJZ0zLZkvJOSbMvibcvhTTCch9S2WrgbiS04jKFIYflbuFLZ+Z5nKQftnoBLC8v6Wa3wbLdyS4SG8bwcpTdFMCQIbE4h7dD6rigbKbw1MpSRPtz4cGrLEAOqVHFxT25hUMyozqDr5fE2mfhYCeITea94lDGmOalKWCpxQBeuRxbO1Cd7y/ed5l7Ww5JYxmV+7BXs/KZGj7UW7mTtWrqD9ALYComUkLMhWT9CKVDEP/o5UMf/c/78eayOrWGsrAcskzHbjAEYNP1gd9CyQiOIBwKV6R7p1g9O2JKzqwS69raS5MjadNWXL37CyloFPIVYA6/C5ufyrxgHsp6Oabc8spvN17tyHhRwag2fg92WebNRw+3sH6bcP8aiKDNlfam0H9nObIPaBQUZBaBN9AmyyJRcEzg7+aceJH7JxfswCqBUTvk9adYTAiuh2B6gXjhvhNp3ciAv4DQ2BjY2LoYtpTHQ7dbMKsmVJxtnCyQsM6j0K2E67FbZUsRMv6+Y0T7Y34DxDAuyyti2SxhviIwD9cqGcwRXIHp9PjizqlPJrlfuJfzEX0dob4aQs3Rngy2vbtc5LGHq6z8+LWk4GUkipVO2Xsa6zjbze90uJ6zmvMVwoOkZ9HfoA6R71eqe6/x6Y8YMVM6wwey2FyCTsomSiishVY2oIMlC7QS4DdqfUh+4ySOBcyOprwyngjrfh2o2TlQu+NzNtgVPoyQX1M4L3+eUUpBSijUfKxqgmwQKmrpb+JQpVgL1larJqRD4qb5KlRiie1i5hj4cgOFmFrzC5s99r2bf8Pv4NJN/hShdZL+z4yIp7Gw0H767MfoVxDzxz5IPCFMT7PK9znHaYvWl+dRRdwMPMWU5cAca7WQv7YuSlm3Wo/3LDVs7a9g27Nba/0m3Vrzqc7eW2HGtW2s9p9bnbu25W3vu1p67tedu7blb+7/o1joL12vN9C8I/97y9sL1nl47UYP5D59v/wFQSwcIeTJW9zMIAAAlKgAAUEsBAhQAFAAICAgAiIyGUHkyVvczCAAAJSoAAAwAAAAAAAAAAAAAAAAAAAAAAHNlbGVuaXVtLnhtbFBLBQYAAAAAAQABADoAAABtCAAAAAA=</con:data>
+          <con:id>66871e29-fbe4-4972-8125-0e148267a06b</con:id>
+        </con:attachment>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobName" value="getstatusjob"/>
+          <con:entry key="createNewFolder" value="true"/>
+          <con:entry key="cycleEndingDate" value="2020-04-06"/>
+          <con:entry key="assigneeUser" value="5c00014e5e2eee35d79f7093"/>
+          <con:entry key="cycleStartingDate" value="2020-04-06"/>
+          <con:entry key="versionName" value="Unscheduled"/>
+          <con:entry key="createNewCycle" value="true"/>
+          <con:entry key="projectKey" value="${#Project#projectkey}"/>
+          <con:entry key="file" value="file:selenium.xml"/>
+          <con:entry key="jobDescription" value="readyapi_desription"/>
+          <con:entry key="automationFramework" value="Selenium"/>
+          <con:entry key="folderName" value="getstatusjob"/>
+          <con:entry key="cycleName" value="getstatusjob"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobName</con:entry>
+          <con:entry>automationFramework</con:entry>
+          <con:entry>cycleName</con:entry>
+          <con:entry>folderName</con:entry>
+          <con:entry>versionName</con:entry>
+          <con:entry>projectKey</con:entry>
+          <con:entry>cycleStartingDate</con:entry>
+          <con:entry>cycleEndingDate</con:entry>
+          <con:entry>createNewCycle</con:entry>
+          <con:entry>createNewFolder</con:entry>
+          <con:entry>jobDescription</con:entry>
+          <con:entry>file</con:entry>
+          <con:entry>assigneeUser</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="5a078932-dddc-485e-bb53-1833ebb34f88">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="76f117a3-c62e-452c-8945-6b476ed01e48">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="1c1e5232-e924-418c-b4a5-f5362e0d3959">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="Groovy Script" id="0f368149-7f21-4cb3-aff7-cdb9ec9e9dd0">
+    <con:settings/>
+    <con:config>
+      <script>//def responseAsXml = context.expand( '${&lt;Atomapi>Should able to create Job for new cycle for Selenium framework by providing all fields#ResponseAsXml#declare namespace ns1=\'https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/create\'; //ns1:Response[1]/ns1:message[1]}' )
+
+//log.info(responseAsXml);
+//def namePropertyvaluePartial = namePropertyvalue[-7..-5]  //this grabs 3 characters the 7th,8th and 9th character
+//def jobid = responseAsXml[47..-1]
+//log.info(jobid);
+
+
+
+//def myList = ["Selenium", "TestNg", "JUNIT"]
+
+
+//def framework = myList[0];
+
+//log.info(framework);
+
+
+
+//Selenium
+def response = context.expand('${#[ATOM-APIs#&lt;Atomapi>Get the job status and validate response for all three status#create]#Response#$[\'message\']}')
+
+
+log.info ("Extracting job id from response: "+response +"\n");
+
+
+def jobid = response[47..-1]
+
+log.info(jobid);
+
+context.testCase.setPropertyValue('validjobid', jobid)</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="get job status - unexecuted" id="97271914-bbb7-41d3-a530-195e5d17c7c1">
+    <con:settings/>
+    <con:config service="get job status api" resourcePath="/api/v1/automation/job/status/{JobId}" methodName="JobId" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="get job status - unexecuted" id="844e05ec-5418-465c-975f-9d50c3489748" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accesskey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/status/FC6E85B37F278F69DE416EAE0CE444E823B5E732572CFE0F1BF88324D2EC2F60</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="7b0c2cd8-d527-4687-8247-787cae0c4e7e" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="15954c66-4ecc-4d28-9e92-b9adefd5efb5" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>UNEXECUTED</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>10</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="10">&lt;![CDATA[UNEXECUTED]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="JobId" value="${#TestCase#validjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>JobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="change job status to success" id="35f75281-316e-4046-a90e-783f70f7627e">
+    <con:settings/>
+    <con:config service="update status api" resourcePath="/api/v1/automation/job/status" methodName="Status" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="change job status to success" id="28fdbe3b-4de1-4a6a-833c-ccdc01878dbf" mediaType="multipart/form-data" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/status</con:originalUri>
+        <con:assertion type="MessageContentAssertion" id="ac967eec-c0a6-49ff-8609-2efe4f1cf153" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>exists</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Status has been updated successfully.</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>exists</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>37</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="37">&lt;![CDATA[Status has been updated successfully.]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="311e139a-cd4b-4566-8fa3-0f831c5d2b44" name="Message Content Assertion 2">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Status has been updated successfully.</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>37</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="37">&lt;![CDATA[Status has been updated successfully.]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#validjobid}"/>
+          <con:entry key="jobStatus" value="SUCCESS"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+          <con:entry>jobStatus</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="get job status - success" id="70c443d7-70e0-4371-97f2-d8eca109bb51">
+    <con:settings/>
+    <con:config service="get job status api" resourcePath="/api/v1/automation/job/status/{JobId}" methodName="JobId" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="get job status - success" id="844e05ec-5418-465c-975f-9d50c3489748" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accesskey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/status/FC6E85B37F278F69DE416EAE0CE444E823B5E732572CFE0F1BF88324D2EC2F60</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="7b0c2cd8-d527-4687-8247-787cae0c4e7e" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="8eb2ccc2-2570-4aff-80f4-2b3936242b94" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>SUCCESS</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>7</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="7">&lt;![CDATA[SUCCESS]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="JobId" value="${#TestCase#validjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>JobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="change job status to inprogress" id="9ea077c5-a9bb-49ab-b36e-83baf18b4d7c">
+    <con:settings/>
+    <con:config service="update status api" resourcePath="/api/v1/automation/job/status" methodName="Status" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="change job status to inprogress" id="28fdbe3b-4de1-4a6a-833c-ccdc01878dbf" mediaType="multipart/form-data" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/status</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="d0cf48fa-6aa8-4b36-ad84-f46adaa50c78" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="48a40d17-9a8b-4029-8167-5da00c580f2b" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Status has been updated successfully.</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>37</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="37">&lt;![CDATA[Status has been updated successfully.]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#validjobid}"/>
+          <con:entry key="jobStatus" value="IN PROGRESS"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+          <con:entry>jobStatus</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="get job status - inprogress" id="171da359-2e64-4a5d-b4d8-cf5ba32e2267">
+    <con:settings/>
+    <con:config service="get job status api" resourcePath="/api/v1/automation/job/status/{JobId}" methodName="JobId" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="get job status - inprogress" id="844e05ec-5418-465c-975f-9d50c3489748" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accesskey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/status/FC6E85B37F278F69DE416EAE0CE444E823B5E732572CFE0F1BF88324D2EC2F60</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="7b0c2cd8-d527-4687-8247-787cae0c4e7e" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="25344d8e-fd35-4a15-95d6-a8f29d043b1c" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>exists</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>IN PROGRESS</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>exists</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>11</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="11">&lt;![CDATA[IN PROGRESS]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="JobId" value="${#TestCase#validjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>JobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="change job status to UNEXECUTED" id="eea4679c-fddd-426e-b66f-aa74db1631cd">
+    <con:settings/>
+    <con:config service="update status api" resourcePath="/api/v1/automation/job/status" methodName="Status" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="change job status to UNEXECUTED" id="28fdbe3b-4de1-4a6a-833c-ccdc01878dbf" mediaType="multipart/form-data" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accessKey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/status</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2a98857c-9849-4bac-9a22-766a9e564be9" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="9306262c-9f53-4c98-84b1-57541ab1fd29" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>Status has been updated successfully.</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>37</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="37">&lt;![CDATA[Status has been updated successfully.]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="jobId" value="${#TestCase#validjobid}"/>
+          <con:entry key="jobStatus" value="UNEXECUTED"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>jobId</con:entry>
+          <con:entry>jobStatus</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="get job status - from inprogress to unexecuted" id="c31a004f-4033-4617-b403-0caae10c1858">
+    <con:settings/>
+    <con:config service="get job status api" resourcePath="/api/v1/automation/job/status/{JobId}" methodName="JobId" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="get job status - from inprogress to unexecuted" id="844e05ec-5418-465c-975f-9d50c3489748" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="accesskey" value="${#Project#accessKey}"/>
+  &lt;con:entry key="jwt" value="${#[ATOM-APIs#jwt#generateJWT]#Response}"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/automation/job/status/FC6E85B37F278F69DE416EAE0CE444E823B5E732572CFE0F1BF88324D2EC2F60</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="7b0c2cd8-d527-4687-8247-787cae0c4e7e" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="25344d8e-fd35-4a15-95d6-a8f29d043b1c" name="Message Content Assertion">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>exists</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>IN PROGRESS</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>exists</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>11</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="11">&lt;![CDATA[IN PROGRESS]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="MessageContentAssertion" id="c0b276e2-dde4-4eb3-a0f5-3c0536b44ac0" name="Message Content Assertion 2">
+          <con:configuration xsi:type="con:MessageContentAssertion">
+            <con:elements>
+              <con:xpath>//data[1]</con:xpath>
+              <con:element>data</con:element>
+              <con:type xsi:nil="true"/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>UNEXECUTED</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentType</con:xpath>
+              <con:element>@contentType</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>text/plain;charset=UTF-8</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:elements>
+              <con:xpath>//data[1]/@contentLength</con:xpath>
+              <con:element>@contentLength</con:element>
+              <con:type/>
+              <con:operator>=</con:operator>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>10</con:expectedValue>
+              <con:hasValue>false</con:hasValue>
+              <con:numberType>false</con:numberType>
+            </con:elements>
+            <con:originalMessage>&lt;data contentType="text/plain;charset=UTF-8" contentLength="10">&lt;![CDATA[UNEXECUTED]]&gt;&lt;/data></con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="JobId" value="${#TestCase#validjobid}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>JobId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>validjobid</con:name>
+      <con:value>98835D02889144055815C5C6231A98299C88C7B7EA2E220B753D779604750F30</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>97271914-bbb7-41d3-a530-195e5d17c7c1</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>70c443d7-70e0-4371-97f2-d8eca109bb51</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9ea077c5-a9bb-49ab-b36e-83baf18b4d7c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:environmentSpec>
+    <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>

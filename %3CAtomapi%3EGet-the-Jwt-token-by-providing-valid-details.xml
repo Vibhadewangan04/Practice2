@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="0ee215ba-5394-4238-926c-8bec03d2ee5a" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="&lt;Atomapi>Get the Jwt token by providing valid details" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="0ee215ba-5394-4238-926c-8bec03d2ee5afileName">%3CAtomapi%3EGet-the-Jwt-token-by-providing-valid-details</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="&lt;Atomapi>Get the Jwt token by providing valid details" id="38fd5ee5-79c9-43c1-8f76-eb2cbab2b0df">
+    <con:settings/>
+    <con:config service="generate jwt api" resourcePath="/api/v1/jwt/generate" methodName="Generate" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="&lt;Atomapi>Get the Jwt token by providing valid details" id="c766f9e7-a347-4d1b-9458-0ac580bc1f74" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Content-Type" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#vortex_base_url}</con:endpoint>
+        <con:request>{
+   "accessKey" : "${#Project#accessKey}",
+   "secretKey" : "${#Project#secretKey}",
+   "accountId" : "${#Project#accountId}",
+   "zephyrBaseUrl" : "${#Project#zephyrBaseUrl}",
+   "expirationTime" : 360000
+}</con:request>
+        <con:originalUri>https://qabench-vortexapi.zephyr4jiracloud.com/api/v1/jwt/generate</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="7faee2d8-7acf-4be1-88a8-3664c414e4d6" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="Simple Contains" id="274185c5-d06a-4e3f-aa1b-b171a3e7a3ad" name="Contains">
+          <con:configuration>
+            <token>JWT</token>
+            <ignoreCase>true</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="5a078932-dddc-485e-bb53-1833ebb34f88">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="76f117a3-c62e-452c-8945-6b476ed01e48">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="1c1e5232-e924-418c-b4a5-f5362e0d3959">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a575d597-1fdf-4cfb-a5d6-c10a8a95f7ff">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="eb9963a9-c89e-41e3-89b4-165ef68a7c7a">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>38fd5ee5-79c9-43c1-8f76-eb2cbab2b0df</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:environmentSpec>
+    <con:entry environmentId="5a078932-dddc-485e-bb53-1833ebb34f88">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>
