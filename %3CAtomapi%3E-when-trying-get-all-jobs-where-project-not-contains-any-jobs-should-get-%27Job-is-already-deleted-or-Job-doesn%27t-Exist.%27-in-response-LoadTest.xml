@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:loadUiTest name="&lt;Atomapi> when trying get all jobs where project not contains any jobs should get 'Job is already deleted or Job doesn't Exist.' in response LoadTest" id="b41859a7-058f-4840-b316-fa545e4303a3" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="soapUIObjectSourceId">1c483ec1-55cf-4035-835e-54cdea8fd69d</con:setting>
+    <con:setting id="soapUIObjectSourceType">soapUIObjectSourceType_TestCase</con:setting>
+    <con:setting id="b41859a7-058f-4840-b316-fa545e4303a3fileName">%3CAtomapi%3E-when-trying-get-all-jobs-where-project-not-contains-any-jobs-should-get-%27Job-is-already-deleted-or-Job-doesn%27t-Exist.%27-in-response-LoadTest</con:setting>
+  </con:settings>
+  <con1:loadui-project id="8c6ffa6e-4112-4b4a-aa00-925ee83593b2" label="&lt;Atomapi> when trying get all jobs where project not contains any jobs should get 'Job is already deleted or Job doesn't Exist.' in response LoadTest" xmlns:con1="http://eviware.com/loadui/config">
+    <con1:properties>
+      <con1:property propagates="true" key="ModelItem.description" type="java.lang.String"/>
+      <con1:property propagates="true" key="CanvasItem.abortOnFinish" type="java.lang.Boolean">false</con1:property>
+      <con1:property propagates="true" key="ModelItem.saveReport" type="java.lang.Boolean">false</con1:property>
+      <con1:property propagates="true" key="ModelItem.reportFolder" type="java.lang.String"/>
+      <con1:property propagates="true" key="ModelItem.reportFormat" type="java.lang.String"/>
+      <con1:property propagates="true" key="Temporary project" type="java.lang.String"/>
+      <con1:property propagates="true" key="ModelItem.rate" type="java.lang.Long">10</con1:property>
+      <con1:property propagates="true" key="ModelItem.loadDistributionType" type="com.smartbear.load.facade.LoadDistributionType">PerScenario</con1:property>
+      <con1:property propagates="true" key="ModelItem.remoteMode" type="java.lang.String"/>
+      <con1:property propagates="true" key="ModelItem.id" type="java.lang.String">b41859a7-058f-4840-b316-fa545e4303a3</con1:property>
+    </con1:properties>
+    <con1:attributes/>
+    <con1:addons/>
+    <con1:scene label="New Scenario" id="aa94b11f-799c-4c94-9892-40542122d026">
+      <con1:properties>
+        <con1:property propagates="true" key="ModelItem.description" type="java.lang.String"/>
+        <con1:property propagates="true" key="CanvasItem.abortOnFinish" type="java.lang.Boolean">false</con1:property>
+        <con1:property propagates="true" key="SceneItem.followProject" type="java.lang.Boolean">true</con1:property>
+        <con1:property propagates="true" key="SceneItem.scenarioRatePercentage" type="java.lang.Long">100</con1:property>
+        <con1:property propagates="true" key="SceneItem.scenarioRateSpecific" type="java.lang.Long">10</con1:property>
+        <con1:property propagates="true" key="ModelItem.samplerOutputLevel" type="com.eviware.loadui.api.component.SoapUISamplerOutputLevel">TestCaseAndAllTestSteps</con1:property>
+      </con1:properties>
+      <con1:attributes/>
+      <con1:addons/>
+      <con1:component type="com.eviware.loadui.impl.component.IntervalComponent" label="Interval 1" id="99e3782f-d312-445b-9309-743a76eb122b" category="Scheduler">
+        <con1:properties>
+          <con1:property propagates="true" key="ModelItem.description" type="java.lang.String"/>
+          <con1:property propagates="true" key="stateProperty" type="java.lang.Boolean">true</con1:property>
+          <con1:property propagates="true" key="startAt" type="java.lang.Long">0</con1:property>
+          <con1:property propagates="true" key="duration" type="java.lang.Long">5</con1:property>
+          <con1:property propagates="true" key="unit" type="java.lang.String">Sec</con1:property>
+          <con1:property propagates="true" key="mode" type="java.lang.String">Single</con1:property>
+          <con1:property propagates="true" key="defaultMode" type="java.lang.Boolean">true</con1:property>
+        </con1:properties>
+        <con1:attributes>
+          <con1:property key="com.eviware.loadui.api.model.ComponentItem@type">Interval</con1:property>
+        </con1:attributes>
+        <con1:addons/>
+      </con1:component>
+      <con1:component type="com.eviware.loadui.impl.component.generators.FixedVU" label="Fixed Load 1" id="aa9478e9-c9d2-4246-8a50-612f22752542" category="Generators">
+        <con1:properties>
+          <con1:property propagates="true" key="ModelItem.description" type="java.lang.String"/>
+          <con1:property propagates="true" key="stateProperty" type="java.lang.Boolean">true</con1:property>
+          <con1:property propagates="true" key="limitVU" type="java.lang.Long">100</con1:property>
+          <con1:property propagates="true" key="load" type="java.lang.Long">5</con1:property>
+          <con1:property propagates="true" key="interval" type="java.lang.Long">1000</con1:property>
+        </con1:properties>
+        <con1:attributes>
+          <con1:property key="com.eviware.loadui.api.model.ComponentItem@type">Fixed Load</con1:property>
+        </con1:attributes>
+        <con1:addons/>
+      </con1:component>
+      <con1:component type="com.eviware.loadui.components.soapui.SoapUISamplerComponent" label="ATOM-APIs:&lt;Atomapi> when trying get all jobs where project not contains any jobs should get 'Job is already deleted or Job doesn't Exist.' in response" id="00e9ad7b-d342-4ea9-85fd-365533e202a2" category="Runners">
+        <con1:properties>
+          <con1:property propagates="true" key="ModelItem.description" type="java.lang.String"/>
+          <con1:property propagates="true" key="concurrentSamples" type="java.lang.Long">1000</con1:property>
+          <con1:property propagates="true" key="property_name_is_not_relevant_for_private_property" type="java.lang.Long">9223372036854775807</con1:property>
+          <con1:property propagates="true" key="maxQueueSize" type="java.lang.Long">1000</con1:property>
+          <con1:property propagates="true" key="countDiscarded" type="java.lang.Boolean">false</con1:property>
+          <con1:property propagates="true" key="disabledTestSteps" type="java.lang.String"/>
+          <con1:property propagates="true" key="_thinkTime" type="java.lang.Long">0</con1:property>
+          <con1:property propagates="true" key="ReadyApiTestCase" type="com.eviware.soapui.impl.wsdl.testcase.WsdlTestCase">1c483ec1-55cf-4035-835e-54cdea8fd69d</con1:property>
+          <con1:property propagates="true" key="raiseError" type="java.lang.Boolean">true</con1:property>
+          <con1:property propagates="true" key="outputTestCaseProperties" type="java.lang.Boolean">true</con1:property>
+          <con1:property propagates="true" key="OutputLevel" type="java.lang.String">TestCase only</con1:property>
+          <con1:property propagates="true" key="closeConnectionsAfterRequest" type="java.lang.Boolean">false</con1:property>
+          <con1:property propagates="true" key="disableSoapuiAssertions" type="java.lang.Boolean">false</con1:property>
+          <con1:property propagates="true" key="forceShareDatasources" type="java.lang.Boolean">true</con1:property>
+        </con1:properties>
+        <con1:attributes>
+          <con1:property key="com.eviware.loadui.api.model.ComponentItem@type">Ready API TestCase Runner</con1:property>
+        </con1:attributes>
+        <con1:addons/>
+      </con1:component>
+      <con1:connection outputTerminalId="99e3782f-d312-445b-9309-743a76eb122b/outgoingTerminal" inputTerminalId="aa9478e9-c9d2-4246-8a50-612f22752542/stateTerminal"/>
+      <con1:connection outputTerminalId="aa9478e9-c9d2-4246-8a50-612f22752542/triggerTerminal" inputTerminalId="00e9ad7b-d342-4ea9-85fd-365533e202a2/triggerTerminal"/>
+      <con1:connection outputTerminalId="00e9ad7b-d342-4ea9-85fd-365533e202a2/runningTerminal" inputTerminalId="aa9478e9-c9d2-4246-8a50-612f22752542/Sample Count"/>
+    </con1:scene>
+    <con1:statistics>
+      <con1:page title="DefaultLoadUIStatisticPage">
+        <con1:chartGroup type="com.eviware.loadui.api.statistics.model.chart.line.LineChartView" title="" groupType="Monitors">
+          <con1:attributes>
+            <con1:property key="GroupId">96a73222-a84f-4f56-b004-fa3b2d1949b0</con1:property>
+          </con1:attributes>
+        </con1:chartGroup>
+      </con1:page>
+    </con1:statistics>
+  </con1:loadui-project>
+  <con:loadUITestScenario projectId="8c6ffa6e-4112-4b4a-aa00-925ee83593b2" scenarioId="aa94b11f-799c-4c94-9892-40542122d026" name="New Scenario" id="dc921c49-0065-4320-bd6f-4441234313dc">
+    <con:settings/>
+  </con:loadUITestScenario>
+  <con:loadUIPanelData id="daeddd43-d298-46bc-a313-8153fcf181cd">
+    <con:panel>Log</con:panel>
+  </con:loadUIPanelData>
+  <con:reportParameters/>
+</con:loadUiTest>

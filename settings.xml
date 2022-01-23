@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="24d45740-729a-40fc-87e8-1e0cb2effb66" created="3.1.0" activeEnvironment="bench" name="ATOM_API" resourceRoot="${projectDir}" updated="3.1.0" encryptionMode="Not encrypted" compositeProjectFormat="1.3" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="24d45740-729a-40fc-87e8-1e0cb2effb66fileName">ATOM_API</con:setting>
+    <con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.ProTestRunnerUIAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Report Format(s)" value="XML"/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="Export JUnit Results" value="true"/>
+  <con:entry key="Export All" value="true"/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Slack Channel(s)" value=""/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="Endpoint" value=""/>
+  <con:entry key="Test Suite Tags" value=""/>
+  <con:entry key="Select Report Type" value="JUnit-Style report for automation"/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Test Suite" value="&lt;all>"/>
+  <con:entry key="Run in-process" value="false"/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="Print Report" value="true"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Test Case Tags" value=""/>
+  <con:entry key="Export JUnit Results with test properties" value="false"/>
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Test Case" value="&lt;all>"/>
+  <con:entry key="Slack Access Token" value=""/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="user-settings.xml Password" value=""/>
+  <con:entry key="TestRunner Path" value="/Applications/ReadyAPI-3.1.0.app/Contents/Resources/app/bin"/>
+  <con:entry key="Environment" value="Default environment"/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="Root Folder" value="${WORKSPACE}"/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Save Project" value="false"/>
+</xml-fragment>]]></con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:requirements/>
+  <con:properties>
+    <con:property>
+      <con:name>accessKey</con:name>
+    </con:property>
+    <con:property>
+      <con:name>secretKey</con:name>
+    </con:property>
+    <con:property>
+      <con:name>accountId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>zephyrBaseUrl</con:name>
+    </con:property>
+    <con:property>
+      <con:name>project</con:name>
+    </con:property>
+    <con:property>
+      <con:name>projectkey</con:name>
+    </con:property>
+    <con:property>
+      <con:name>projectId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>project2</con:name>
+    </con:property>
+    <con:property>
+      <con:name>projectkey2</con:name>
+    </con:property>
+    <con:property>
+      <con:name>projectId2</con:name>
+    </con:property>
+    <con:property>
+      <con:name>jiraurl</con:name>
+    </con:property>
+  </con:properties>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to SoapUI Pro tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:environment id="eb9963a9-c89e-41e3-89b4-165ef68a7c7a" name="default1">
+    <con:service type="REST" name="generate jwt api">
+      <con:endpoint authProfile="Inherit From Parent" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="create job api">
+      <con:endpoint authProfile="Inherit From Parent" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="create jira project api">
+      <con:endpoint authProfile="No Authorization" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://preprod-540-vanilla.atlassian.net</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Execute job api">
+      <con:endpoint authProfile="No Authorization" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="update job api">
+      <con:endpoint authProfile="No Authorization" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="delete job api">
+      <con:endpoint authProfile="No Authorization" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="update status api">
+      <con:endpoint authProfile="No Authorization" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="delete all jobs api">
+      <con:endpoint authProfile="No Authorization" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="get job status api">
+      <con:endpoint authProfile="No Authorization" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="get all jobs in the project api">
+      <con:endpoint authProfile="No Authorization" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:property>
+      <con:name>accessKey</con:name>
+      <con:value>MjZiNTMwMzEtMTRlYi0zMzEwLThhNzktZDY5MzQ0YTA4OThkIDU1NzA1OCUzQTYyMWM1ZjNkLTVkNWItNDBkNi04NWU4LTAwMDVmOTMzNDljNiBVU0VSX0RFRkFVTFRfTkFNRQ</con:value>
+    </con:property>
+    <con:property>
+      <con:name>secretKey</con:name>
+      <con:value>k35mWivOvMa8RwuBCgu0bng26cMzNWorFYQ4L7-5p-M</con:value>
+    </con:property>
+    <con:property>
+      <con:name>accountId</con:name>
+      <con:value>557058:621c5f3d-5d5b-40d6-85e8-0005f93349c6</con:value>
+    </con:property>
+    <con:property>
+      <con:name>zephyrBaseUrl</con:name>
+      <con:value>https://preprod-api.zephyr4jiracloud.com/connect</con:value>
+    </con:property>
+    <con:property>
+      <con:name>project</con:name>
+      <con:value>readyapi</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectkey</con:name>
+      <con:value>READ</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectId</con:name>
+      <con:value>10005</con:value>
+    </con:property>
+    <con:property>
+      <con:name>project2</con:name>
+      <con:value>Automation</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectkey2</con:name>
+      <con:value>AUT</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectId2</con:name>
+      <con:value>10006</con:value>
+    </con:property>
+    <con:property>
+      <con:name>jiraurl</con:name>
+      <con:value>https://preprod-540-vanilla.atlassian.net</con:value>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:environment id="ba8cfb14-59c4-4b53-b8e2-2f53c101779b" name="preprod">
+    <con:service type="REST" name="generate jwt api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="create job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="create jira project api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://preprod-530hf2-vanilla.atlassian.net</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Execute job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="update job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="delete job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="update status api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="delete all jobs api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="get job status api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="get all jobs in the project api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://stage-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:property>
+      <con:name>accessKey</con:name>
+      <con:value>MWNjMmU5MGYtYzQ4OC0zMzJhLWIzYjMtNjczNDAzN2RhMTM3IDU1NzA1OCUzQTYyMWM1ZjNkLTVkNWItNDBkNi04NWU4LTAwMDVmOTMzNDljNiBhZG1pbg</con:value>
+    </con:property>
+    <con:property>
+      <con:name>secretKey</con:name>
+      <con:value>KHvfdZ7QmSdYdTqWXZkoyvKPwPgImUiumRcimQekiIU</con:value>
+    </con:property>
+    <con:property>
+      <con:name>accountId</con:name>
+      <con:value>557058:621c5f3d-5d5b-40d6-85e8-0005f93349c6</con:value>
+    </con:property>
+    <con:property>
+      <con:name>zephyrBaseUrl</con:name>
+      <con:value>https://preprod-api.zephyr4jiracloud.com/connect</con:value>
+    </con:property>
+    <con:property>
+      <con:name>project</con:name>
+      <con:value>apple</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectId</con:name>
+      <con:value>10002</con:value>
+    </con:property>
+    <con:property>
+      <con:name>project2</con:name>
+      <con:value>Automation</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectkey2</con:name>
+      <con:value>AUT</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectId2</con:name>
+      <con:value>10009</con:value>
+    </con:property>
+    <con:property>
+      <con:name>jiraurl</con:name>
+      <con:value>https://preprod-530hf2-vanilla.atlassian.net</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectkey</con:name>
+      <con:value>AP</con:value>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:environment id="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8" name="bench">
+    <con:service type="REST" name="generate jwt api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="create job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="create jira project api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vanilla01.atlassian.net</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Execute job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="update job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="delete job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="update status api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="delete all jobs api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="get job status api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="get all jobs in the project api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qabench-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:property>
+      <con:name>accessKey</con:name>
+      <con:value>NDIyYTQwNWUtMTBjMS0zODMzLWE1OGQtNDMxYzk3ZjI1YmJjIDU1NzA1OCUzQTYyMWM1ZjNkLTVkNWItNDBkNi04NWU4LTAwMDVmOTMzNDljNiBVU0VSX0RFRkFVTFRfTkFNRQ</con:value>
+    </con:property>
+    <con:property>
+      <con:name>secretKey</con:name>
+      <con:value>J1Uccef-idlVXsmSYwHRdO1Pz7HTxkTUeFYqZawaQ_E</con:value>
+    </con:property>
+    <con:property>
+      <con:name>accountId</con:name>
+      <con:value>557058:b4c90ca6-9e9b-4206-8749-6e0e766d97c7</con:value>
+    </con:property>
+    <con:property>
+      <con:name>zephyrBaseUrl</con:name>
+      <con:value>https://qabench-api.zephyr4jiracloud.com/connect</con:value>
+    </con:property>
+    <con:property>
+      <con:name>project</con:name>
+      <con:value>Automation</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectId</con:name>
+      <con:value>10017</con:value>
+    </con:property>
+    <con:property>
+      <con:name>project2</con:name>
+      <con:value>nonatom</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectkey2</con:name>
+      <con:value>NONA</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectId2</con:name>
+      <con:value>10016</con:value>
+    </con:property>
+    <con:property>
+      <con:name>jiraurl</con:name>
+      <con:value>https://qabench-vanilla01.atlassian.net/</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectkey</con:name>
+      <con:value>AUT</con:value>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:environment id="36e028af-b970-4387-b7f8-4c94c36806bf" name="cloud">
+    <con:service type="REST" name="generate jwt api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qacloud-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="create job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qacloud-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="create jira project api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qa-react.atlassian.net</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Execute job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qacloud-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="update job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qacloud-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="delete job api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qacloud-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="update status api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qacloud-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="delete all jobs api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qacloud-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="get job status api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qacloud-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="get all jobs in the project api">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://qacloud-vortexapi.zephyr4jiracloud.com</con:endpoint>
+    </con:service>
+    <con:property>
+      <con:name>accessKey</con:name>
+      <con:value>ODVkZjg0N2ItYTZmNi0zNTdkLWE4NzItOTkyMWE5Njg4Y2EzIDU1NzA1OCUzQTYyMWM1ZjNkLTVkNWItNDBkNi04NWU4LTAwMDVmOTMzNDljNiBuZXh0Z2Vu</con:value>
+    </con:property>
+    <con:property>
+      <con:name>secretKey</con:name>
+      <con:value>5zUhzGlMmZ6H1irD-7cEnTHM3LVTE57MWAqYDsqT008</con:value>
+    </con:property>
+    <con:property>
+      <con:name>accountId</con:name>
+      <con:value>557058:621c5f3d-5d5b-40d6-85e8-0005f93349c6</con:value>
+    </con:property>
+    <con:property>
+      <con:name>zephyrBaseUrl</con:name>
+      <con:value>https://qa-api.zephyr4jiracloud.com/connect</con:value>
+    </con:property>
+    <con:property>
+      <con:name>project</con:name>
+      <con:value>jaga_nextgen</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectId</con:name>
+      <con:value>10215</con:value>
+    </con:property>
+    <con:property>
+      <con:name>project2</con:name>
+      <con:value>nextgen60</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectId2</con:name>
+      <con:value>10211</con:value>
+    </con:property>
+    <con:property>
+      <con:name>jiraurl</con:name>
+      <con:value>https://qa-react.atlassian.net</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectkey</con:name>
+      <con:value>JN</con:value>
+    </con:property>
+    <con:property>
+      <con:name>projectkey2</con:name>
+      <con:value>NXTGN</con:value>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:authRepository>
+    <con:basicAuthEntry>
+      <con:name>JIRA_authentiation</con:name>
+      <con:type>Basic</con:type>
+      <con:username>qa@getzephyr.com</con:username>
+      <con:password>kgDsw062lOzMdHgvyoTq41A6</con:password>
+      <con:preemptive>true</con:preemptive>
+    </con:basicAuthEntry>
+  </con:authRepository>
+  <con:environmentSpec>
+    <con:entry environmentId="5a078932-dddc-485e-bb53-1833ebb34f88">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="ba8cfb14-59c4-4b53-b8e2-2f53c101779b">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="a24b6d11-1edb-4eee-99d5-e6ea6765c8f8">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="36e028af-b970-4387-b7f8-4c94c36806bf">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+  <con:tags/>
+  <con:zephyrProjectSettings projectName="bhoom" projectId="12129" versionName="Unscheduled" versionId="-1" cycleName="AA" cycleId="cf177db2-12a1-4346-8a24-f91c3ca17083"/>
+</con:soapui-project>
